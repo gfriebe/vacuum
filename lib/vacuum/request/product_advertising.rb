@@ -83,10 +83,11 @@ module Vacuum
       # Returns the Addressable::URI URL of the Product Advertising API
       # request.
       def url
-        Addressable::URI.new :scheme        => 'http',
-                             :host          => endpoint.host,
-                             :path          => '/onca/xml',
-                             :query_values  => parameters
+        @url ||= Addressable::URI.new :scheme => 'http',
+                                      :host   => endpoint.host,
+                                      :path   => '/onca/xml'
+        @url.query_values = parameters
+        @url
       end
 
       private
