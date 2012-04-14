@@ -26,8 +26,7 @@ module Vacuum
       # Raises a Bad Locale error if locale is not valid.
       def locale
         @locale ||= 'US'
-        LOCALES.include? @locale or raise BadLocale
-
+        @locale = 'US' unless LOCALES.include? @locale
         @locale
       end
 
